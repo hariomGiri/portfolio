@@ -1,11 +1,17 @@
 import React from 'react';
 import { Terminal, Brain, Code2, Database } from 'lucide-react';
+import profileImage from '../../assets/images/IMG_20241015_160315.jpg';
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
+        <div className="order-2 lg:order-1">
+          <img 
+            src={profileImage} 
+            alt="Hariom Giri"
+            className="rounded-full w-48 h-48 object-cover mx-auto mb-8 border-4 border-purple-400"
+          />
           <p className="text-gray-400 mb-2">Hello,</p>
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">
             This is <span className="text-purple-400">Hariom Giri</span>,
