@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Twitter, Youtube, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -74,11 +74,28 @@ function App() {
       <footer className="bg-[#080816] py-6 mt-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="flex justify-center gap-4 mb-4">
-            <a href="#" className="text-gray-400 hover:text-purple-400 transition"><Github /></a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 transition"><Linkedin /></a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 transition"><Twitter /></a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 transition"><Youtube /></a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 transition"><Mail /></a>
+            <a 
+              href="https://github.com/hariomGiri" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-purple-400 transition"
+            >
+              <Github />
+            </a>
+            <a 
+              href="http://www.linkedin.com/in/hariom-giri" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-purple-400 transition"
+            >
+              <Linkedin />
+            </a>
+            <a 
+              href="mailto:sureshgiri469@gmail.com" 
+              className="text-gray-400 hover:text-purple-400 transition"
+            >
+              <Mail />
+            </a>
           </div>
           <p className="text-gray-500">© 2024 Hariom Giri. All rights reserved.</p>
         </div>
