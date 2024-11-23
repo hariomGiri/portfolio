@@ -1,29 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <base href="/project-bolt-sb1/">
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hariom Giri - ML Engineer & Full Stack Developer</title>
-    <meta name="description" content="Portfolio website of Hariom Giri - ML Engineer & Full Stack Developer" />
-    <script>
-      // Handle GitHub Pages redirect
-      (function() {
-        const redirect = localStorage.getItem('path');
-        if (redirect) {
-          localStorage.removeItem('path');
-          const segments = redirect.split('/');
-          const path = segments.slice(2).join('/');
-          if (path) {
-            window.history.replaceState(null, null, '/project-bolt-sb1/' + path);
-          }
-        }
-      })();
-    </script>
+    <title>Hariom Giri - Portfolio</title>
+    <base href="/project-bolt-sb1/" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
