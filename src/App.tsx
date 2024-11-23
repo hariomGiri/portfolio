@@ -8,6 +8,7 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import Skills from './components/Skills';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -100,6 +101,8 @@ function App() {
           <p className="text-gray-500">© 2024 Hariom Giri. All rights reserved.</p>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   );
 }
