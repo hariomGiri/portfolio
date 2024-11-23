@@ -1,70 +1,100 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Terminal, Brain, Code2, Database } from 'lucide-react';
-import profileImage from '../../assets/images/IMG_20241015_160315.jpg';
+import profileImage from '../assets/images/IMG_20241015_160315.jpg';
 
 const Hero = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const image = document.querySelector('.profile-image') as HTMLElement;
+      const codeCard = document.querySelector('.code-card') as HTMLElement;
+      
+      if (image && codeCard) {
+        image.style.transform = `translateY(${scrolled * 0.2}px)`;
+        codeCard.style.transform = `translateY(${-scrolled * 0.1}px) rotate3d(1, 1, 1, ${scrolled * 0.02}deg)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="order-2 lg:order-1">
-          <img 
-            src={profileImage} 
-            alt="Hariom Giri"
-            className="rounded-full w-48 h-48 object-cover mx-auto mb-8 border-4 border-purple-400"
-          />
-          <p className="text-gray-400 mb-2">Hello,</p>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-            This is <span className="text-purple-400">Hariom Giri</span>,
-          </h1>
-          <h2 className="text-2xl lg:text-3xl text-gray-300 mb-6">
-            ML Engineer & Full Stack Developer
-          </h2>
-          <p className="text-gray-400 mb-8 leading-relaxed">
+    <section className="min-h-screen flex items-center justify-center px-4 overflow-hidden">
+      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Left Column */}
+        <div className="order-2 lg:order-1 space-y-6 transform transition-all duration-500 hover:scale-[1.02]">
+          {/* Profile Image with Gradient Border */}
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+            <img 
+              src={profileImage} 
+              alt="Hariom Giri"
+              className="profile-image relative rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover mx-auto border-4 border-purple-400 shadow-lg transform transition duration-500 hover:scale-105"
+            />
+          </div>
+
+          {/* Text Content */}
+          <div className="text-center lg:text-left space-y-4">
+            <p className="text-gray-400 mb-2 animate-fade-in">Hello,</p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 animate-slide-up">
+              This is <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Hariom Giri</span>
+            </h1>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-6 animate-slide-up">
+              ML Engineer & Full Stack Developer
+            </h2>
+          </div>
+
+          <p className="text-gray-400 leading-relaxed text-center lg:text-left animate-fade-in">
             A passionate Computer Science student at RGPV, Indore, specializing in Machine Learning 
             and Software Development. Experienced in building predictive models, voice assistants, 
             and web applications using Python, ML libraries, and modern web technologies.
           </p>
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="flex items-center gap-2 text-gray-300">
-              <Brain className="text-purple-400 w-5 h-5" />
-              <span>Machine Learning</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <Code2 className="text-purple-400 w-5 h-5" />
-              <span>Python Development</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <Terminal className="text-purple-400 w-5 h-5" />
-              <span>Web Development</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-300">
-              <Database className="text-purple-400 w-5 h-5" />
-              <span>Data Analysis</span>
-            </div>
+
+          {/* Skills Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {[
+              { icon: Brain, text: "Machine Learning" },
+              { icon: Code2, text: "Python Development" },
+              { icon: Terminal, text: "Web Development" },
+              { icon: Database, text: "Data Analysis" }
+            ].map((skill, index) => (
+              <div key={index} 
+                className="flex items-center gap-2 text-gray-300 p-3 rounded-lg bg-purple-900/10 hover:bg-purple-900/20 transition-all duration-300 transform hover:scale-105">
+                <skill.icon className="text-purple-400 w-5 h-5" />
+                <span>{skill.text}</span>
+              </div>
+            ))}
           </div>
-          <div className="flex gap-4">
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <a
               href="#contact"
-              className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition"
+              className="group relative px-6 py-3 rounded-lg overflow-hidden"
             >
-              Contact Me
+              <div className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-purple-600 group-hover:bg-purple-700"></div>
+              <span className="relative text-white">Contact Me</span>
             </a>
             <a
               href="#projects"
-              className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 px-6 py-3 rounded-lg transition"
+              className="group relative px-6 py-3 rounded-lg overflow-hidden border border-purple-600"
             >
-              See My Work
+              <div className="absolute inset-0 w-0 bg-purple-600/10 transition-all duration-300 ease-out group-hover:w-full"></div>
+              <span className="relative text-purple-400">See My Work</span>
             </a>
           </div>
         </div>
-        <div className="relative">
-          <div className="bg-[#1a1a3f] p-6 rounded-lg shadow-xl">
+
+        {/* Right Column - Code Card */}
+        <div className="relative order-1 lg:order-2">
+          <div className="code-card bg-[#1a1a3f] p-6 rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1">
             <div className="flex gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <pre className="text-sm text-gray-300 font-mono">
+            <pre className="text-sm text-gray-300 font-mono overflow-x-auto">
               <code>{`class MLEngineer:
     def __init__(self):
         self.name = "Hariom Giri"
@@ -83,7 +113,7 @@ const Hero = () => {
 `}</code>
             </pre>
           </div>
-          <Brain className="absolute -bottom-6 -right-6 text-purple-400 w-12 h-12" />
+          <Brain className="absolute -bottom-6 -right-6 text-purple-400 w-12 h-12 animate-pulse" />
         </div>
       </div>
     </section>
