@@ -1,36 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Terminal, Brain, Code2, Database } from 'lucide-react';
 import profileImage from '../assets/images/IMG_20241015_160315.jpg';
 
 const Hero = () => {
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const image = document.querySelector('.profile-image') as HTMLElement;
-      const codeCard = document.querySelector('.code-card') as HTMLElement;
-      
-      if (image && codeCard) {
-        image.style.transform = `translateY(${scrolled * 0.2}px)`;
-        codeCard.style.transform = `translateY(${-scrolled * 0.1}px) rotate3d(1, 1, 1, ${scrolled * 0.02}deg)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left Column */}
-        <div className="order-2 lg:order-1 space-y-6 transform transition-all duration-500 hover:scale-[1.02]">
-          {/* Profile Image with Gradient Border */}
+        <div className="order-2 lg:order-1 space-y-6">
+          {/* Profile Image with Floating Animation */}
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
             <img 
               src={profileImage} 
               alt="Hariom Giri"
-              className="profile-image relative rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover mx-auto border-4 border-purple-400 shadow-lg transform transition duration-500 hover:scale-105"
+              className="profile-image relative rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover mx-auto border-4 border-purple-400 shadow-lg 
+                         animate-float hover:scale-105 transition-transform duration-300"
             />
           </div>
 

@@ -8,7 +8,12 @@
   }
   
   body {
-    @apply bg-[#0a0a1f] text-white;
+    background-color: #0a0a1f;
+    color: #ffffff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
   }
 }
 
@@ -37,4 +42,9 @@
     transform: translateY(20px);
     transition: opacity 300ms, transform 300ms;
   }
+}
+
+/* Add transitions for smooth theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
