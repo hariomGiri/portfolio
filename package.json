@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "npm run build && cp CNAME dist/ && gh-pages -d dist"
+    "deploy": "npm run build && copy CNAME dist\\ && gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
