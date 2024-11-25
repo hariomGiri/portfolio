@@ -1,7 +1,10 @@
 import React from 'react';
 import { Code2 } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const Projects = () => {
+  const { theme, currentTheme } = useTheme();
+  
   const projects = [
     {
       title: 'Linear Regression - Insurance Prediction',
@@ -71,34 +74,53 @@ renderTodoList();`,
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 bg-[#0d0d24]">
+    <section 
+      id="projects" 
+      className="py-20 px-4"
+      style={{ backgroundColor: theme.background }}
+    >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">PROJECTS</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-[#1a1a3f] rounded-lg overflow-hidden hover:shadow-purple-600/10 hover:shadow-lg transition"
+              style={{ 
+                backgroundColor: theme.cardBg,
+                boxShadow: currentTheme === 'gradient' 
+                  ? `0 4px 20px ${theme.primary}20`
+                  : '0 4px 20px rgba(0, 0, 0, 0.1)'
+              }}
+              className="rounded-lg overflow-hidden hover:scale-105 transition-all duration-300"
             >
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-purple-400">{project.title}</h3>
-                  <Code2 className="text-purple-400" />
+                  <h3 className="text-xl font-bold" style={{ color: theme.primary }}>
+                    {project.title}
+                  </h3>
+                  <Code2 style={{ color: theme.primary }} />
                 </div>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex gap-2 mb-4">
+                <p style={{ color: theme.muted }} className="mb-4">
+                  {project.description}
+                </p>
+                <div className="flex gap-2 mb-4 flex-wrap">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-sm"
+                      style={{ 
+                        backgroundColor: `${theme.primary}15`,
+                        color: theme.primary,
+                        borderColor: `${theme.primary}30`
+                      }}
+                      className="px-3 py-1 rounded-full text-sm border"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-              <div className="bg-[#131332] p-4">
-                <pre className="text-sm text-gray-300 font-mono">
+              <div style={{ backgroundColor: `${theme.cardBg}dd` }} className="p-4">
+                <pre className="text-sm font-mono" style={{ color: theme.text }}>
                   <code>{project.code}</code>
                 </pre>
               </div>

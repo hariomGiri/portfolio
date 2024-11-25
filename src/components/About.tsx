@@ -1,12 +1,24 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const About = () => {
+  const { theme, currentTheme } = useTheme();
+
   return (
-    <section id="about" className="py-20 px-4 bg-[#0d0d24]">
+    <section 
+      id="about" 
+      className="py-20 px-4"
+      style={{ backgroundColor: theme.background }}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">WHO I AM?</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-gray-300">
+        <h2 className="text-3xl font-bold mb-12 text-center" style={{ color: theme.text }}>
+          ABOUT ME
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div 
+            className="space-y-6"
+            style={{ color: theme.muted }}
+          >
             <p>
               I am Hariom Giri, a dedicated and aspiring Computer Science student currently 
               pursuing my Bachelor of Technology at RGPV, Indore. With a strong foundation 
@@ -35,12 +47,24 @@ const About = () => {
             </p>
           </div>
           <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600"
-              alt="Developer workspace"
-              className="rounded-lg shadow-xl"
-            />
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-purple-600/20 rounded-lg -z-10"></div>
+            <div 
+              className="rounded-lg shadow-xl overflow-hidden"
+              style={{ 
+                boxShadow: currentTheme === 'gradient' 
+                  ? `0 4px 20px ${theme.primary}20`
+                  : '0 4px 20px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600"
+                alt="Developer workspace"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div 
+              className="absolute -bottom-4 -right-4 w-32 h-32 rounded-lg -z-10"
+              style={{ backgroundColor: `${theme.primary}20` }}
+            ></div>
           </div>
         </div>
       </div>

@@ -1,7 +1,10 @@
 import React from 'react';
 import { Briefcase } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const Experience = () => {
+  const { theme, currentTheme } = useTheme();
+  
   const experiences = [
     {
       title: 'Web Development Intern',
@@ -12,19 +15,46 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4">
+    <section 
+      id="experience" 
+      className="py-20 px-4"
+      style={{ backgroundColor: theme.background }}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">Experience</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center" style={{ color: theme.text }}>
+          Experience
+        </h2>
         <div className="space-y-8">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="bg-[#1a1a3f] p-6 rounded-lg relative hover:shadow-purple-600/10 hover:shadow-lg transition"
+              className="p-6 rounded-lg relative hover:scale-105 transition-all duration-300"
+              style={{ 
+                backgroundColor: theme.cardBg,
+                boxShadow: currentTheme === 'gradient' 
+                  ? `0 4px 20px ${theme.primary}20`
+                  : '0 4px 20px rgba(0, 0, 0, 0.1)'
+              }}
             >
-              <Briefcase className="absolute top-6 right-6 text-purple-400" />
-              <h3 className="text-xl font-bold text-purple-400">{exp.title}</h3>
-              <p className="text-gray-400 mb-2">{exp.company} | {exp.period}</p>
-              <p className="text-gray-300">{exp.description}</p>
+              <Briefcase 
+                className="absolute top-6 right-6" 
+                style={{ color: theme.primary }}
+              />
+              <h3 
+                className="text-xl font-bold"
+                style={{ color: theme.primary }}
+              >
+                {exp.title}
+              </h3>
+              <p 
+                className="mb-2"
+                style={{ color: theme.muted }}
+              >
+                {exp.company} | {exp.period}
+              </p>
+              <p style={{ color: theme.text }}>
+                {exp.description}
+              </p>
             </div>
           ))}
         </div>

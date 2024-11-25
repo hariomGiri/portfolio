@@ -1,38 +1,61 @@
 import React from 'react';
-import { Award, Medal } from 'lucide-react';
+import { Award } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const Certifications = () => {
-  const certificates = [
+  const { theme, currentTheme } = useTheme();
+
+  const certifications = [
     {
       title: 'Introduction to Cybersecurity',
       organization: 'CISCO Networking Academy',
-      icon: Award
+      icon: Award,
+      date: '2023'
     },
     {
       title: 'Smart Hackathon 2023',
       organization: 'LNCT Group of Colleges',
-      icon: Medal
+      icon: Award,
+      date: '2023'
     },
     {
       title: 'Mastering MERN',
       organization: 'Octanet & GITA Autonomous College',
-      icon: Award
+      icon: Award,
+      date: '2024'
     }
   ];
 
   return (
-    <section id="certifications" className="py-20 px-4">
+    <section 
+      id="certifications" 
+      className="py-20 px-4"
+      style={{ backgroundColor: theme.background }}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">CERTIFICATIONS</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {certificates.map((cert, index) => (
+        <h2 className="text-3xl font-bold mb-12 text-center" style={{ color: theme.text }}>
+          CERTIFICATIONS
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {certifications.map((cert, index) => (
             <div
               key={index}
-              className="bg-[#1a1a3f] p-6 rounded-lg hover:shadow-purple-600/10 hover:shadow-lg transition"
+              style={{ 
+                backgroundColor: theme.cardBg,
+                boxShadow: currentTheme === 'gradient' 
+                  ? `0 4px 20px ${theme.primary}20`
+                  : '0 4px 20px rgba(0, 0, 0, 0.1)'
+              }}
+              className="p-6 rounded-lg hover:scale-105 transition-all duration-300"
             >
-              <cert.icon className="text-purple-400 w-8 h-8 mb-4" />
-              <h3 className="text-xl font-bold text-purple-400 mb-2">{cert.title}</h3>
-              <p className="text-gray-300">{cert.organization}</p>
+              <div className="flex items-center gap-3 mb-4">
+                <Award style={{ color: theme.primary }} className="w-6 h-6" />
+                <h3 className="text-xl font-bold" style={{ color: theme.primary }}>
+                  {cert.title}
+                </h3>
+              </div>
+              <p style={{ color: theme.muted }} className="mb-4">{cert.organization}</p>
+              <p style={{ color: theme.text }} className="text-sm">{cert.date}</p>
             </div>
           ))}
         </div>

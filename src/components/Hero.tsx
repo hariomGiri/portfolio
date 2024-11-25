@@ -1,8 +1,11 @@
 import React from 'react';
 import { Terminal, Brain, Code2, Database } from 'lucide-react';
 import profileImage from '../assets/images/IMG_20241015_160315.jpg';
+import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
+  const { theme, currentTheme } = useTheme();
+
   return (
     <section className="min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -45,9 +48,14 @@ const Hero = () => {
               { icon: Database, text: "Data Analysis" }
             ].map((skill, index) => (
               <div key={index} 
-                className="flex items-center gap-2 text-gray-300 p-3 rounded-lg bg-purple-900/10 hover:bg-purple-900/20 transition-all duration-300 transform hover:scale-105">
-                <skill.icon className="text-purple-400 w-5 h-5" />
-                <span>{skill.text}</span>
+                style={{ 
+                  backgroundColor: `${theme.primary}10`,
+                  borderColor: `${theme.primary}30`
+                }}
+                className="flex items-center gap-2 p-3 rounded-lg border hover:scale-105 transition-all duration-300"
+              >
+                <skill.icon style={{ color: theme.primary }} className="w-5 h-5" />
+                <span style={{ color: theme.text }}>{skill.text}</span>
               </div>
             ))}
           </div>
@@ -57,23 +65,38 @@ const Hero = () => {
             <a
               href="#contact"
               className="group relative px-6 py-3 rounded-lg overflow-hidden"
+              style={{ 
+                backgroundColor: theme.primary,
+                color: theme.text,
+                boxShadow: currentTheme === 'gradient' ? '0 0 20px rgba(0, 198, 255, 0.3)' : 'none'
+              }}
             >
-              <div className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-purple-600 group-hover:bg-purple-700"></div>
-              <span className="relative text-white">Contact Me</span>
+              <span className="relative">Contact Me</span>
             </a>
             <a
               href="#projects"
-              className="group relative px-6 py-3 rounded-lg overflow-hidden border border-purple-600"
+              className="group relative px-6 py-3 rounded-lg overflow-hidden"
+              style={{ 
+                borderColor: theme.primary,
+                color: theme.primary 
+              }}
             >
-              <div className="absolute inset-0 w-0 bg-purple-600/10 transition-all duration-300 ease-out group-hover:w-full"></div>
-              <span className="relative text-purple-400">See My Work</span>
+              <span className="relative">See My Work</span>
             </a>
           </div>
         </div>
 
         {/* Right Column - Code Card */}
         <div className="relative order-1 lg:order-2">
-          <div className="code-card bg-[#1a1a3f] p-6 rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1">
+          <div 
+            className="code-card p-6 rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1"
+            style={{ 
+              backgroundColor: theme.cardBg,
+              boxShadow: currentTheme === 'gradient' 
+                ? '0 0 30px rgba(0, 198, 255, 0.15)' 
+                : '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+            }}
+          >
             <div className="flex gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>

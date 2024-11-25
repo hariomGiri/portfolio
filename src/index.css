@@ -46,5 +46,31 @@
 
 /* Add transitions for smooth theme switching */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease-in-out, 
+              color 0.3s ease-in-out, 
+              border-color 0.3s ease-in-out,
+              box-shadow 0.3s ease-in-out,
+              transform 0.3s ease-in-out;
+}
+
+:root {
+  --theme-primary: var(--primary-color, #9333ea);
+  --theme-secondary: var(--secondary-color, #7e22ce);
+  --theme-background: var(--background-color, #0a0a1f);
+  --theme-text: var(--text-color, #ffffff);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }

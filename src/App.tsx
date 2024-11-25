@@ -9,38 +9,47 @@ import Contact from './components/Contact';
 import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import ScrollToTop from './components/ScrollToTop';
+import { useTheme } from './context/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-[#0a0a1f] text-white">
-      <nav className="fixed top-0 w-full bg-[#0a0a1f]/80 backdrop-blur-sm z-50 border-b border-purple-900/20">
-        <div className="max-w-6xl mx-auto px-4 py-4">
+    <div style={{ backgroundColor: theme.background }}>
+      <nav 
+        className="fixed w-full z-50 py-4"
+        style={{ backgroundColor: theme.cardBg }}
+      >
+        <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center">
-            <a href="#" className="text-xl font-bold text-purple-400">HG</a>
-            
-            {/* Mobile menu button */}
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden text-purple-400 hover:text-purple-300"
-            >
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
+            <a href="#" className="text-2xl font-bold" style={{ color: theme.text }}>
+              HG
+            </a>
 
-            {/* Desktop menu */}
-            <div className="hidden lg:flex gap-6">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
               {['ABOUT', 'EXPERIENCE', 'SKILLS', 'EDUCATION', 'PROJECTS'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="relative group hover:text-purple-400 transition-colors duration-300"
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
                 >
                   {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
+              <ThemeToggle />
             </div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden"
+              style={{ color: theme.text }}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
           </div>
 
           {/* Mobile menu */}
@@ -56,6 +65,7 @@ function App() {
                   {item}
                 </a>
               ))}
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -72,7 +82,7 @@ function App() {
         <Contact />
       </main>
 
-      <footer className="bg-[#080816] py-6 mt-20">
+      <footer style={{ backgroundColor: theme.cardBg }} className="py-6 mt-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="flex justify-center gap-4 mb-4">
             <a 
