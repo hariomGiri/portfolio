@@ -21,8 +21,8 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="p-2 rounded-full transition-all duration-300 hover:scale-110"
       style={{ 
-        backgroundColor: theme.cardBg,
-        color: theme.primary,
+        backgroundColor: currentTheme === 'light' ? theme.primary : theme.cardBg,
+        color: currentTheme === 'light' ? theme.cardBg : theme.primary,
         boxShadow: currentTheme === 'gradient' 
           ? `0 0 20px ${theme.primary}40`
           : '0 4px 12px rgba(0, 0, 0, 0.1)'

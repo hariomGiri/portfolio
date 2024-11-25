@@ -10,30 +10,37 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left Column */}
-        <div className="order-2 lg:order-1 space-y-6">
+        <div className="order-2 lg:order-1 space-y-6 mt-8 lg:mt-0">
           {/* Profile Image with Floating Animation */}
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
             <img 
               src={profileImage} 
               alt="Hariom Giri"
-              className="profile-image relative rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover mx-auto border-4 border-purple-400 shadow-lg 
+              className="profile-image relative rounded-full w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-cover mx-auto border-4 border-purple-400 shadow-lg 
                          animate-float hover:scale-105 transition-transform duration-300"
             />
           </div>
 
           {/* Text Content */}
           <div className="text-center lg:text-left space-y-4">
-            <p className="text-gray-400 mb-2 animate-fade-in">Hello,</p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 animate-slide-up">
-              This is <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Hariom Giri</span>
+            <p style={{ color: currentTheme === 'light' ? '#666666' : '#9CA3AF' }} className="mb-2 animate-fade-in">
+              Hello,
+            </p>
+            <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 animate-slide-up px-4 sm:px-0" 
+                style={{ color: currentTheme === 'light' ? '#1F2937' : theme.text }}>
+              This is <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                Hariom Giri
+              </span>
             </h1>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-6 animate-slide-up">
+            <h2 className="text-lg sm:text-xl lg:text-3xl mb-6 animate-slide-up"
+                style={{ color: currentTheme === 'light' ? '#4B5563' : '#D1D5DB' }}>
               ML Engineer & Full Stack Developer
             </h2>
           </div>
 
-          <p className="text-gray-400 leading-relaxed text-center lg:text-left animate-fade-in">
+          <p style={{ color: currentTheme === 'light' ? '#666666' : '#9CA3AF' }} 
+             className="leading-relaxed text-center lg:text-left animate-fade-in">
             A passionate Computer Science student at RGPV, Indore, specializing in Machine Learning 
             and Software Development. Experienced in building predictive models, voice assistants, 
             and web applications using Python, ML libraries, and modern web technologies.
@@ -49,13 +56,15 @@ const Hero = () => {
             ].map((skill, index) => (
               <div key={index} 
                 style={{ 
-                  backgroundColor: `${theme.primary}10`,
-                  borderColor: `${theme.primary}30`
+                  backgroundColor: currentTheme === 'light' ? '#F3F4F6' : `${theme.primary}10`,
+                  borderColor: currentTheme === 'light' ? '#E5E7EB' : `${theme.primary}30`,
                 }}
                 className="flex items-center gap-2 p-3 rounded-lg border hover:scale-105 transition-all duration-300"
               >
                 <skill.icon style={{ color: theme.primary }} className="w-5 h-5" />
-                <span style={{ color: theme.text }}>{skill.text}</span>
+                <span style={{ color: currentTheme === 'light' ? '#4B5563' : theme.text }}>
+                  {skill.text}
+                </span>
               </div>
             ))}
           </div>
@@ -91,7 +100,7 @@ const Hero = () => {
           <div 
             className="code-card p-6 rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1"
             style={{ 
-              backgroundColor: theme.cardBg,
+              backgroundColor: currentTheme === 'light' ? '#1F2937' : theme.cardBg,
               boxShadow: currentTheme === 'gradient' 
                 ? '0 0 30px rgba(0, 198, 255, 0.15)' 
                 : '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
@@ -102,7 +111,7 @@ const Hero = () => {
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <pre className="text-sm text-gray-300 font-mono overflow-x-auto">
+            <pre className="text-sm font-mono" style={{ color: '#E5E7EB' }}>
               <code>{`class MLEngineer:
     def __init__(self):
         self.name = "Hariom Giri"
@@ -111,14 +120,14 @@ const Hero = () => {
             "ML": ["Scikit-learn", "Pandas", 
                   "NumPy", "Matplotlib"],
             "Development": ["Python", "HTML", 
-                          "CSS", "JavaScript"],
-            "Projects": ["Pragya kalp Assistant",
-                       "Insurance Prediction",
-                       "Brain Stroke Detection"]
+                          "CSS", "JavaScript"]
         }
-        self.interests = ["AI/ML", "Software Dev",
-                         "Problem Solving"]
-`}</code>
+        
+    def get_passion(self):
+        return "Building AI Solutions"
+        
+    def current_focus(self):
+        return "Machine Learning & Web Dev"`}</code>
             </pre>
           </div>
           <Brain className="absolute -bottom-6 -right-6 text-purple-400 w-12 h-12 animate-pulse" />

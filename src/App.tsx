@@ -14,7 +14,7 @@ import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme } = useTheme();
+  const { theme, currentTheme } = useTheme();
 
   return (
     <div style={{ backgroundColor: theme.background }}>
@@ -34,22 +34,35 @@ function App() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                  className="relative py-2 text-sm font-medium transition-colors duration-300"
+                  style={{ 
+                    color: currentTheme === 'light' ? '#4B5563' : '#E5E7EB',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme.primary;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = currentTheme === 'light' ? '#4B5563' : '#E5E7EB';
+                  }}
                 >
-                  {item}
+                  <span className="relative z-10">{item}</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
               <ThemeToggle />
             </div>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden"
-              style={{ color: theme.text }}
-            >
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
+            {/* Mobile Controls */}
+            <div className="flex items-center gap-4 lg:hidden">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-2xl"
+                style={{ color: theme.text }}
+              >
+                {isMenuOpen ? <X /> : <Menu />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu */}
@@ -60,12 +73,20 @@ function App() {
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300 py-2"
+                  className="py-2 text-sm font-medium transition-colors duration-300"
+                  style={{ 
+                    color: currentTheme === 'light' ? '#4B5563' : '#E5E7EB',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme.primary;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = currentTheme === 'light' ? '#4B5563' : '#E5E7EB';
+                  }}
                 >
                   {item}
                 </a>
               ))}
-              <ThemeToggle />
             </div>
           </div>
         </div>
