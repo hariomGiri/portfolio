@@ -9,10 +9,10 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 overflow-hidden">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        {/* Left Column */}
+        {/* Left Column - Profile and Text */}
         <div className="order-2 lg:order-1 space-y-6 mt-8 lg:mt-0">
           {/* Profile Image with Floating Animation */}
-          <div className="relative group">
+          <div className="relative group flex justify-center lg:block">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
             <img 
               src={profileImage} 
@@ -96,9 +96,9 @@ const Hero = () => {
         </div>
 
         {/* Right Column - Code Card */}
-        <div className="relative order-1 lg:order-2">
+        <div className="relative order-1 lg:order-2 flex justify-center">
           <div 
-            className="code-card p-6 rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1"
+            className="code-card p-6 rounded-lg shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1 w-full max-w-[500px]"
             style={{ 
               backgroundColor: currentTheme === 'light' ? '#1F2937' : theme.cardBg,
               boxShadow: currentTheme === 'gradient' 
@@ -111,7 +111,7 @@ const Hero = () => {
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <pre className="text-sm font-mono" style={{ color: '#E5E7EB' }}>
+            <pre className="text-sm font-mono overflow-x-auto" style={{ color: '#E5E7EB' }}>
               <code>{`class MLEngineer:
     def __init__(self):
         self.name = "Hariom Giri"
