@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code2 } from 'lucide-react';
+import { Code2, Link as LinkIcon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const Projects = () => {
@@ -47,6 +47,7 @@ X_scaled = scaler.fit_transform(X)`,
 r = sr.Recognizer()
 with sr.Microphone() as source:
     audio = r.listen(source)`,
+      githubLink: 'https://github.com/hariomGiri/Pragya-Kalp/blob/main/README.md'
     },
     {
       title: 'Scientific Calculator',
@@ -118,6 +119,22 @@ renderTodoList();`,
                     </span>
                   ))}
                 </div>
+                
+                {/* GitHub Link */}
+                {project.githubLink && (
+                  <div className="mt-4">
+                    <a 
+                      href={project.githubLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm"
+                      style={{ color: theme.primary }}
+                    >
+                      <LinkIcon className="w-4 h-4" />
+                      View Project Details
+                    </a>
+                  </div>
+                )}
               </div>
               <div style={{ backgroundColor: `${theme.cardBg}dd` }} className="p-4">
                 <pre className="text-sm font-mono" style={{ color: theme.text }}>

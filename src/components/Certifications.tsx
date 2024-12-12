@@ -39,7 +39,7 @@ const Certifications = () => {
     },
     {
       title: 'Python & Machine Learning 75 hours Training',
-      organization: 'Issued by IBM SkillsBuild',
+      organization: 'Issued by Robotronix ',
       credential: 'https://drive.google.com/file/d/1IK8-LlunIZ_nt2YedqdfdHQSD-YqN0D-/view?usp=drive_link',
       icon: Award,
       date: '2024',
