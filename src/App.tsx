@@ -11,6 +11,7 @@ import Skills from './components/Skills';
 import ScrollToTop from './components/ScrollToTop';
 import { useTheme } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
+import logo from './assets/images/logo.png'; // Ensure this path is correct
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,9 +25,9 @@ function App() {
       >
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center">
-            <a href="#" className="text-2xl font-bold" style={{ color: theme.text }}>
-              HG
-            </a>
+          <a href="/" className="text-xl font-bold">
+  <img src={logo} alt="Logo" className="h-12" />
+</a>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
-
+import logo from '../assets/images/logo.png';
 const Navigation = () => {
   const { theme, currentTheme } = useTheme();
 
@@ -20,9 +20,8 @@ const Navigation = () => {
           <a 
             href="/"
             className="text-xl font-bold"
-            style={{ color: theme.primary }}
           >
-            HG
+            <img src={logo} alt="Logo" className="h-8" />
           </a>
           <div className="hidden md:flex space-x-4">
             {navItems.map((item, index) => (
