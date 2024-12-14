@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,10 +12,25 @@ import ScrollToTop from './components/ScrollToTop';
 import { useTheme } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
 import logo from './assets/images/logo.png'; // Ensure this path is correct
+import Loader from './components/Loader'; // Import the Loader component
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // State to control loading
   const { theme, currentTheme } = useTheme();
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />; // Show loader while loading
+  }
 
   return (
     <div style={{ backgroundColor: theme.background }}>
@@ -31,7 +46,7 @@ function App() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {['ABOUT', 'EXPERIENCE', 'SKILLS', 'EDUCATION', 'PROJECTS'].map((item) => (
+              {['ABOUT', 'EXPERIENCE', 'SKILLS', 'EDUCATION', 'PROJECTS','CERTIFICATIONS','CONTACT'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -69,7 +84,7 @@ function App() {
           {/* Mobile menu */}
           <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} mt-4`}>
             <div className="flex flex-col space-y-4">
-              {['ABOUT', 'EXPERIENCE', 'SKILLS', 'EDUCATION', 'PROJECTS'].map((item) => (
+              {['ABOUT', 'EXPERIENCE', 'SKILLS', 'EDUCATION', 'PROJECTS','CERTIFICATIONS','CONTACT'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}

@@ -1,0 +1,37 @@
+.loader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.gradient-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px; /* Adjust size as needed */
+  height: 200px; /* Adjust size as needed */
+  background: radial-gradient(circle, rgba(109, 213, 237, 0.7), rgba(33, 147, 176, 0.7)); /* Theme matching colors */
+  border-radius: 50%; /* Make it circular */
+  transform: translate(-50%, -50%); /* Center the wave */
+  animation: wave 5s ease-in-out infinite; /* Animation for wave */
+}
+
+.logo {
+  z-index: 1; /* Ensure logo is above the wave */
+  height: 100px; /* Adjust logo size as needed */
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1); /* Adjust wave height */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
