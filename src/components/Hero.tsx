@@ -1,6 +1,6 @@
 import React from 'react';
 import { Terminal, Brain, Code2, Database } from 'lucide-react';
-import profileImage from '../assets/images/IMG_20241015_160315.jpg';
+import profileImage from '../assets/images/profile image.webp';
 import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
@@ -17,8 +17,16 @@ const Hero = () => {
             <img 
               src={profileImage} 
               alt="Hariom Giri"
-              className="profile-image relative rounded-full w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-cover mx-auto border-4 border-purple-400 shadow-lg 
+              className="profile-image relative rounded-full w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto border-4 border-purple-400 shadow-lg 
                          animate-float hover:scale-105 transition-transform duration-300"
+              style={{
+                imageRendering: '-webkit-optimize-contrast',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                width: '192px',  // 48 * 4 pixels for retina displays
+                height: '192px',
+                maxWidth: '100%'
+              }}
             />
           </div>
 

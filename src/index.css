@@ -94,3 +94,34 @@
 .nav-item:hover::after {
   width: 100%;
 }
+
+/* Add these rules to your existing CSS */
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* Optional: Add watermark to images */
+.protected-image {
+  position: relative;
+}
+
+.protected-image::before {
+  content: "© Hariom Giri";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}

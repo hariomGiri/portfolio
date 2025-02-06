@@ -13,6 +13,7 @@ import { useTheme } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
 import logo from './assets/images/logo.png'; // Ensure this path is correct
 import Loader from './components/Loader'; // Import the Loader component
+import { setupImageProtection } from './utils/imageProtection';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,6 +27,10 @@ function App() {
     }, 2000); // Adjust time as needed
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    setupImageProtection();
   }, []);
 
   if (loading) {
